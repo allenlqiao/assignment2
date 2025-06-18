@@ -13,3 +13,23 @@ for i, color in enumerate(colors):
     buttons.append(btn)
 
 root.mainloop()
+
+# Feature B
+import random
+
+pattern = []
+
+def show_pattern():
+    global pattern
+    pattern = [random.randint(0, 3) for _ in range(3)]
+    delay = 1000
+    for i, index in enumerate(pattern):
+        root.after(i * delay, lambda idx=index: flash_button(idx))
+
+def flash_button(index):
+    btn = buttons[index]
+    original = btn.cget("bg")
+    btn.config(bg="white")
+    root.after(500, lambda: btn.config(bg=original))
+
+show_pattern()
