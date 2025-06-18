@@ -33,3 +33,19 @@ def flash_button(index):
     root.after(500, lambda: btn.config(bg=original))
 
 show_pattern()
+
+# Feature C
+user_pattern = []
+
+def on_click(index):
+    user_pattern.append(index)
+    if user_pattern == pattern[:len(user_pattern)]:
+        if len(user_pattern) == len(pattern):
+            print("Correct sequence!")
+    else:
+        print("Wrong sequence!")
+        user_pattern.clear()
+
+# Assign click event
+for i, btn in enumerate(buttons):
+    btn.config(command=lambda idx=i: on_click(idx))
