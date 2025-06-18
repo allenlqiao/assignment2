@@ -49,3 +49,22 @@ def on_click(index):
 # Assign click event
 for i, btn in enumerate(buttons):
     btn.config(command=lambda idx=i: on_click(idx))
+
+
+# Feature D
+pattern_length = tk.IntVar(value=3)
+
+def start_game():
+    global pattern
+    user_pattern.clear()
+    pattern.clear()
+    pattern.extend([random.randint(0, 3) for _ in range(pattern_length.get())])
+    show_pattern()
+
+length_label = tk.Label(root, text="Pattern size:")
+length_label.grid(row=1, column=0, columnspan=1)
+length_entry = tk.Entry(root, textvariable=pattern_length)
+length_entry.grid(row=1, column=1, columnspan=1)
+
+start_btn = tk.Button(root, text="Start", command=start_game)
+start_btn.grid(row=1, column=2, columnspan=2)
