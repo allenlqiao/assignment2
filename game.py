@@ -68,3 +68,21 @@ length_entry.grid(row=1, column=1, columnspan=1)
 
 start_btn = tk.Button(root, text="Start", command=start_game)
 start_btn.grid(row=1, column=2, columnspan=2)
+
+# Feature E
+score = 0
+
+def on_click(index):
+    global score
+    user_pattern.append(index)
+    if user_pattern == pattern[:len(user_pattern)]:
+        if len(user_pattern) == len(pattern):
+            print("Correct sequence!")
+            score += 1
+            print(f"Score: {score}")
+            user_pattern.clear()
+    else:
+        print("Wrong sequence!")
+        score = 0
+        user_pattern.clear()
+        print("Score reset.")
