@@ -86,3 +86,14 @@ def on_click(index):
         score = 0
         user_pattern.clear()
         print("Score reset.")
+
+# In Python
+import winsound
+
+def flash_button(index):
+    btn = buttons[index]
+    original = btn.cget("bg")
+    btn.config(bg="white")
+    winsound.Beep(1000 + index * 200, 300)
+    root.after(500, lambda: btn.config(bg=original))
+
