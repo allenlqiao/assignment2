@@ -97,3 +97,12 @@ def flash_button(index):
     winsound.Beep(1000 + index * 200, 300)
     root.after(500, lambda: btn.config(bg=original))
 
+sound_map = [500, 600, 700, 800]
+
+def flash_button(index):
+    btn = buttons[index]
+    original = btn.cget("bg")
+    btn.config(bg="white")
+    winsound.Beep(sound_map[index], 300)
+    root.after(500, lambda: btn.config(bg=original))
+
